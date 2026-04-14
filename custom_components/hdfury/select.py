@@ -60,14 +60,11 @@ class HdfurySelect(RestoreEntity, SelectEntity):  # pylint: disable=abstract-met
         if last_state and last_state.state in OPTIONS:
             self._attr_current_option = last_state.state
 
-        await self.async_update()
-
     async def async_update(self) -> None:
         """Update state from the device."""
         try:
             input_index: int = await self._api.async_get_input()
         except HdfuryApiError:
-            self._attr_available = False
             return
 
         self._attr_current_option = INDEX_TO_OPTION[input_index]
