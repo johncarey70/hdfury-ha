@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from datetime import timedelta
 from typing import Any
 
 from homeassistant.components.select import SelectEntity
@@ -9,12 +10,15 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_NAME
 from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import HomeAssistantError
-from homeassistant.helpers.entity_platform import \
-    AddConfigEntryEntitiesCallback
+from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.helpers.restore_state import RestoreEntity
 
 from .const import CONF_HOST, DOMAIN, OPTION_TO_INDEX, OPTIONS
 from .hdfury import HdfuryApi, HdfuryApiError
+
+SCAN_INTERVAL = timedelta(seconds=10)
+
+INDEX_TO_OPTION: dict[int, str] = {value: key for key, value in OPTION_TO_INDEX.items()}
 
 
 async def async_setup_entry(
@@ -55,6 +59,19 @@ class HdfurySelect(RestoreEntity, SelectEntity):  # pylint: disable=abstract-met
         last_state = await self.async_get_last_state()
         if last_state and last_state.state in OPTIONS:
             self._attr_current_option = last_state.state
+
+        await self.async_update()
+
+    async def async_update(self) -> None:
+        """Update state from the device."""
+        try:
+            input_index: int = await self._api.async_get_input()
+        except HdfuryApiError:
+            self._attr_available = False
+            return
+
+        self._attr_current_option = INDEX_TO_OPTION[input_index]
+        self._attr_available = True
 
     async def async_select_option(self, option: str) -> None:
         """Set selected option."""

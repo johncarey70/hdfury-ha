@@ -1,9 +1,9 @@
 # HDFury
 
-![GitHub Release](https://img.shields.io/github/v/release/johncarey70/hdfury-ha?style=flat-square)
-![GitHub Downloads](https://img.shields.io/github/downloads/johncarey70/hdfury-ha/total?style=flat-square)
-![License](https://img.shields.io/github/license/johncarey70/hdfury-ha?style=flat-square)
-![HACS](https://img.shields.io/badge/HACS-Custom-orange.svg?style=flat-square)
+![Release](https://img.shields.io/github/v/release/johncarey70/hdfury-ha)
+![Downloads](https://img.shields.io/github/downloads/johncarey70/hdfury-ha/latest/total)
+![License](https://img.shields.io/github/license/johncarey70/hdfury-ha)
+![Last Commit](https://img.shields.io/github/last-commit/johncarey70/hdfury-ha)
 
 Home Assistant custom integration for controlling HDFury devices via HTTP.
 
