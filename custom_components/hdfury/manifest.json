@@ -1,0 +1,10 @@
+{
+  "domain": "hdfury",
+  "name": "HDFury",
+  "version": "1.0.0",
+  "documentation": "https://github.com/johncarey70/hdfury-ha",
+  "issue_tracker": "https://github.com/johncarey70/hdfury-ha/issues",
+  "codeowners": ["@johncarey70"],
+  "config_flow": true,
+  "iot_class": "local_polling"
+}
