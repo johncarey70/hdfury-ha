@@ -5,6 +5,7 @@ from __future__ import annotations
 from typing import Any
 
 import voluptuous as vol
+
 from homeassistant import config_entries
 from homeassistant.const import CONF_NAME
 from homeassistant.data_entry_flow import FlowResult
@@ -20,7 +21,7 @@ class HdfuryConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     @staticmethod
     def async_get_options_flow(config_entry: config_entries.ConfigEntry) -> None:
         """Get the options flow."""
-        return None
+        return
 
     def is_matching(self, other_flow: config_entries.ConfigFlow) -> bool:
         """Return True if flows match."""
