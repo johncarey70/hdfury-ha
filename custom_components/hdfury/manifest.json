@@ -1,7 +1,7 @@
 {
   "domain": "hdfury",
   "name": "HDFury",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "documentation": "https://github.com/johncarey70/hdfury-ha",
   "issue_tracker": "https://github.com/johncarey70/hdfury-ha/issues",
   "codeowners": [
